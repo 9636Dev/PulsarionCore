@@ -1,11 +1,13 @@
 #pragma once
 
+#include "Core.hpp"
+
 #include <memory>
 #include <spdlog/spdlog.h>
 
 namespace Pulsarion
 {
-    class Log
+    class PULSARION_API Log
     {
     public:
         static void Init();

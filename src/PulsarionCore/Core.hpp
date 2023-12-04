@@ -7,6 +7,7 @@
 #ifdef PULSARION_BUILD_DLL
 #ifdef PULSARION_PLATFORM_WINDOWS
 #define PULSARION_API __declspec(dllexport)
+#define PULSARION_CREATE_API(api_name)
 #elif defined(PULSARION_PLATFORM_LINUX) or defined(PULSARION_PLATFORM_MACOS)
 #define PULSARION_API __attribute__((visibility("default")))
 #else
@@ -23,6 +24,21 @@
 #endif
 #else
 #error "Pulsarion only supports building as static or shared library"
+#endif
+
+#ifdef PULSARION_BUILD_STATIC_LIB
+#define PULSARION_DLL_EXPORT 
+#define PULSARION_DLL_IMPORT
+#else
+#ifdef PULSARION_PLATFORM_WINDOWS
+#define PULSARION_DLL_EXPORT __declspec(dllexport)
+#define PULSARION_DLL_IMPORT __declspec(dllimport)
+#elif defined(PULSARION_PLATFORM_LINUX) or defined(PULSARION_PLATFORM_MACOS)
+#define PULSARION_DLL_EXPORT __attribute__((visibility("default")))
+#define PULSARION_DLL_IMPORT
+#else
+#error "Pulsarion only supports Windows, Linux and macOS!"
+#endif
 #endif
 
 // Define PULSARION_DEBUG_BREAK macro, which is compiler specific

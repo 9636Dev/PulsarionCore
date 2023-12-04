@@ -15,8 +15,6 @@ MESSAGE(NOTICE "Building Pulsarion for renderer: ${PULSARION_RENDERER}")
 
 add_subdirectory(vendor/spdlog) # SpdLog
 
-set(PULSARION_BUILD_LIBRARY_DEFINE STRING "PULSARION_BUILD_DLL")
-
 set(PULSARION_CORE_SOURCES
         src/PulsarionCore/Log.hpp
         src/PulsarionCore/Log.cpp
@@ -33,6 +31,7 @@ if (PULSARION_LIBRARY_TYPE STREQUAL "STATIC")
     target_compile_definitions(PulsarionCore PUBLIC "PULSARION_BUILD_STATIC_LIB")
 elseif (PULSARION_LIBRARY_TYPE STREQUAL "SHARED")
     target_compile_definitions(PulsarionCore PUBLIC "PULSARION_BUILD_SHARED_LIB")
+    target_compile_definitions(PulsarionCore PRIVATE "PULSARION_BUILD_DLL")
 endif()
 
 target_compile_definitions(PulsarionCore PUBLIC
