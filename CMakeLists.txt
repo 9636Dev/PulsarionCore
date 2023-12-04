@@ -1,9 +1,7 @@
 cmake_minimum_required(VERSION 3.27)
-project(PulsarionCore)
+project(PulsarionCore VERSION 0.0.1 LANGUAGES CXX DESCRIPTION "Contains Core and Utility classes for Pulsarion")
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-set(PROJECT_DESCRIPTION "This project contains the core headers and loggers used by Pulsarion")
 
 if(NOT DEFINED PULSARION_LIBRARY_TYPE)
     set(PULSARION_LIBRARY_TYPE "STATIC" CACHE STRING "Type of library to build, static or shared")
