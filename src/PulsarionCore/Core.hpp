@@ -27,7 +27,7 @@
 #endif
 
 #ifdef PULSARION_BUILD_STATIC_LIB
-#define PULSARION_DLL_EXPORT 
+#define PULSARION_DLL_EXPORT
 #define PULSARION_DLL_IMPORT
 #else
 #ifdef PULSARION_PLATFORM_WINDOWS
@@ -68,3 +68,4 @@
 
 // Include cstdint for fixed-width integer types
 #include <cstdint>
+#include <cstddef>
