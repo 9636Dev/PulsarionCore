@@ -57,3 +57,4 @@ endif()
 target_link_libraries(PulsarionCore PUBLIC spdlog::spdlog)
 
 target_include_directories(PulsarionCore PUBLIC src)
+
