@@ -67,5 +67,5 @@
 #endif
 
 // Include cstdint for fixed-width integer types
-#include <cstdint>
 #include <cstddef>
+#include <cstdint>

@@ -8,7 +8,7 @@ namespace Pulsarion
 {
     std::string File::ReadAllText(const std::string &path)
     {
-        File file(path);
+        const File file(path);
         std::string out;
         if (!file.Read(out))
         {
@@ -24,10 +24,7 @@ namespace Pulsarion
 
     }
 
-    File::~File()
-    {
-
-    }
+    File::~File() = default;
 
     std::filesystem::path File::GetPath() const
     {
@@ -36,17 +33,17 @@ namespace Pulsarion
 
     std::filesystem::path File::GetAbsolutePath() const
     {
-        return std::filesystem::absolute(m_Path);
+        return absolute(m_Path);
     }
 
     std::filesystem::path File::GetParentPath() const
     {
-        return std::filesystem::absolute(m_Path).parent_path();
+        return absolute(m_Path).parent_path();
     }
 
     std::string File::GetExtension() const
     {
-        return std::filesystem::absolute(m_Path).extension().string();
+        return absolute(m_Path).extension().string();
     }
 
     std::string File::GetFileName() const
@@ -266,7 +263,7 @@ namespace Pulsarion
             file.seekg(0, std::ios::end);
             out.resize(file.tellg());
             file.seekg(0, std::ios::beg);
-            file.read(reinterpret_cast<char*>(out.data()), out.size());
+            file.read(reinterpret_cast<char*>(out.data()), static_cast<std::streamsize>(out.size()));
             return true;
         }
         catch (const std::exception& e)
@@ -287,7 +284,7 @@ namespace Pulsarion
                 return false;
             }
 
-            file.write(reinterpret_cast<const char*>(in.data()), in.size());
+            file.write(reinterpret_cast<const char*>(in.data()), static_cast<std::streamsize>(in.size()));
             return true;
         }
         catch (const std::exception& e)
@@ -308,7 +305,7 @@ namespace Pulsarion
                 return false;
             }
 
-            file.write(reinterpret_cast<const char*>(in.data()), in.size());
+            file.write(reinterpret_cast<const char*>(in.data()), static_cast<std::streamsize>(in.size()));
             return true;
         }
         catch (const std::exception& e)

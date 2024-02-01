@@ -2,8 +2,8 @@
 
 #include "Core.hpp"
 
-#include <string>
 #include <filesystem>
+#include <string>
 
 namespace Pulsarion
 {
@@ -12,34 +12,34 @@ namespace Pulsarion
     public:
         static std::string ReadAllText(const std::string& path);
 
-        File(const std::string& path);
+        explicit File(const std::string& path);
         ~File();
 
-        std::filesystem::path GetPath() const; 
-        std::filesystem::path GetAbsolutePath() const;
-        std::filesystem::path GetParentPath() const;
-        std::string GetExtension() const;
-        std::string GetFileName() const;
-        std::string GetFileNameWithoutExtension() const;
+        [[nodiscard]] std::filesystem::path GetPath() const;
+        [[nodiscard]] std::filesystem::path GetAbsolutePath() const;
+        [[nodiscard]] std::filesystem::path GetParentPath() const;
+        [[nodiscard]] std::string GetExtension() const;
+        [[nodiscard]] std::string GetFileName() const;
+        [[nodiscard]] std::string GetFileNameWithoutExtension() const;
 
-        bool Exists() const;
-        bool IsDirectory() const;
-        bool IsFile() const;
+        [[nodiscard]] bool Exists() const;
+        [[nodiscard]] bool IsDirectory() const;
+        [[nodiscard]] bool IsFile() const;
 
         // Can error, so it returns a bool
-        bool CreateDirectory() const;
-        bool Delete() const;
-        bool CreateFile() const;
+        [[nodiscard]] bool CreateDirectory() const;
+        [[nodiscard]] bool Delete() const;
+        [[nodiscard]] bool CreateFile() const;
 
-        bool Read(std::string& out) const;
-        bool Write(const std::string& in) const;
-        bool Append(const std::string& in) const;
-        bool ReadLines(std::vector<std::string>& out) const;
-        bool WriteLines(const std::vector<std::string>& in) const;
-        bool AppendLines(const std::vector<std::string>& in) const;
-        bool ReadBytes(std::vector<uint8_t>& out) const;
-        bool WriteBytes(const std::vector<uint8_t>& in) const;
-        bool AppendBytes(const std::vector<uint8_t>& in) const;
+        [[nodiscard]] bool Read(std::string& out) const;
+        [[nodiscard]] bool Write(const std::string& in) const;
+        [[nodiscard]] bool Append(const std::string& in) const;
+        [[nodiscard]] bool ReadLines(std::vector<std::string>& out) const;
+        [[nodiscard]] bool WriteLines(const std::vector<std::string>& in) const;
+        [[nodiscard]] bool AppendLines(const std::vector<std::string>& in) const;
+        [[nodiscard]] bool ReadBytes(std::vector<uint8_t>& out) const;
+        [[nodiscard]] bool WriteBytes(const std::vector<uint8_t>& in) const;
+        [[nodiscard]] bool AppendBytes(const std::vector<uint8_t>& in) const;
         
     private:
         std::filesystem::path m_Path;
