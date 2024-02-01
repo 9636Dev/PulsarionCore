@@ -2,6 +2,7 @@
 
 #include "Core.hpp"
 
+#include <vector>
 #include <filesystem>
 #include <string>
 
