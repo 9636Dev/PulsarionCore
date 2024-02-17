@@ -40,6 +40,8 @@ target_compile_definitions(PulsarionCore PUBLIC
         $<$<PLATFORM_ID:Darwin>:PULSARION_PLATFORM_MACOS>
         $<$<CONFIG:Debug>:PULSARION_DEBUG>
         $<$<CONFIG:Release>:PULSARION_RELEASE>
+        $<$<CONFIG:RelWithDebInfo>:PULSARION_RELEASE>
+        $<$<CONFIG:MinSizeRel>:PULSARION_RELEASE>
 )
 
 
